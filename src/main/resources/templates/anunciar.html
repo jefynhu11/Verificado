@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Anuncia</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css" />
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery.mask.min.js"></script>
+		
+    </head>
+    <body>
+        <div class="uk-container">
+            <form th:action="@{/anunciar}" method="post" enctype="multipart/form-data" id="form-anunciar">
+
+ 				<div class="uk-margin">
+ 					<div class="uk-margin">
+						<td><input type="file" name="imagem123" multiple></td>
+ 					</div>
+                    <legend>Título do produto</legend>
+					<input class="uk-input" type="text" name="titulo" maxlength="100" required>
+                </div>
+
+				<table>
+					<tr>
+						<td><div class="uk-margin">Categoria:
+							<select class="uk-input" name="categoria" required></div>
+								<option value = ""> Selecione uma categoria </option>
+								<option value = "Eletrodomesticos"> Eletrodomesticos </option>
+								<option value = "Brinquedos"> Brinquedos </option>
+								<option value = "Informatica"> Informatica </option>
+								<option value = "Moveis"> Moveis </option>
+							</select></td>
+							
+                        <td><div class="uk-margin">Preço:<input type="text" class="uk-input" name="preco" onkeypress="$(this).mask('#.##0,00', {reverse: true})" placeholder="R$ 000.000,00" required></div></td>
+						
+						<td><div class="uk-margin">Metodos de pagamento:
+							<select class="uk-input" name="" required></div>
+								<option value = ""> Selecione um metodo </option>
+								<option value = "dinheiro"> Apenas dinheiro </option>
+								<option value = "credito"> Credito </option>
+								<option value = "debito"> Debito </option>
+							</select></td>
+						<td><div class="uk-margin">Contato:<input class="uk-input" type="email" name="contato" maxlength="150" required></div></td>
+					</tr>
+					
+					<tr>
+						<div class="uk-margin">
+							Descrição do produto:
+							<textarea class="uk-textarea" name="descricao" maxlength="400"></textarea>
+						</div>
+					</tr>
+				</table>
+                <p class="uk-text-left">
+	            	<button class="uk-button uk-button-primary" type="submit" uk-toggle="target: #modal-example">publicar</button>
+	                <a href="@{/}"> 
+						<button class="uk-button uk-button-default" type="button">Cancelar</button>
+	                </a>
+	            </p>
+
+				<div id="modal-example" uk-modal>
+					<div class="uk-modal-dialog uk-modal-body">
+						<p>O seu anúncio após a publicação ficará disponível para todos, deseja continuar?</p>
+						<center><a href="@{/}">
+            				<button class="uk-button uk-button-primary" type="button" onclick="submitForm()" uk-toggle="target: #sim-example">SIM</button>
+						</a>
+						<button class="uk-button uk-button-default uk-modal-close" type="button">NÃO</button></center>
+					</div>
+				</div>
+				<div id="sim-example" uk-modal>
+					<div class="uk-modal-dialog uk-modal-body"></a>
+						<center><p>Anuncio publicado com sucesso</p></center>
+						<a href="@{/}"> 
+							<center><button class="uk-button uk-button-primary" type="button">ok</button></center>
+	                	</a>
+					</div>
+				</div>
+				
+			</form>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.min.js"></script>
+		<script>
+			function submitForm() {
+				var formulario = document.getElementById("form-anunciar");
+				formulario.submit();
+			}
+		</script>
+
+    </body>
+</html>
