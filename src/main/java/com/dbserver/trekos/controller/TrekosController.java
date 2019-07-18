@@ -20,9 +20,12 @@ public class TrekosController {
 	
 	@PostMapping("/anunciar")
 	public String novoAnunciar(ProdutosModel anunciar) {
-		anunciar.setPreco(anunciar.getPreco().replace(",", "."));
+		anunciar.setPreco(anunciar.getPreco().replace(",", ".").replace(".", ""));
+		System.out.println(anunciar.getPreco());
+		anunciar.setVendido(false);
+		anunciar.setAnunciante("1");
 		anunciarRepository.save(anunciar);
-		return "redirect:/";
+		return "redirect:/anunciar";
 	}
 
 }
